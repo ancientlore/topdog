@@ -1,0 +1,21 @@
+body {
+    background-image: url("/static/dog.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top right;
+}
+.dog {
+    border: 0;
+}
+.dogpen {
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-right: 100px;
+}
+.plankton {
+    font-size: 8pt;
+    margin-right: 200px;
+}
+.plankton b {
+    font-size: 10pt;
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Who's the Top Dog</title>
+		<script type="text/javascript" src="/static/jquery.min.js"></script>
+		<script type="text/javascript" src="/static/jquery-rotate.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="/static/dog.css"/>
+	</head>
+	<body>	
+		<h1>Who's the Top Dog&trade;</h1>
+		<div class="plankton">
+			UI&nbsp;Version:&nbsp;<b>{{.Version}}</b> &#x25CF; Midtier&nbsp;Version:&nbsp;<b><span id="MTV"></span></b> &#x25CF; Backend&nbsp;Version:&nbsp;<b><span id="BEV"></span></b> &#x25CF; Port:&nbsp;<b>{{.ServicePort}}</b> &#x25CF; Midtier&nbsp;URL:&nbsp;<b><a href="{{.Midtier}}/midtier" target="_blank">{{.Midtier}}/midtier</a></b> &#x25CF; Backend&nbsp;URL:&nbsp;<b><a href="{{.Backend}}/backend" target="_blank">{{.Backend}}/backend</a></b>
+		</div>
+		<div class="dogpen">
+			{{ range .Dogs }}<img src="/static/{{.}}.png" alt="{{.}}" class="dog" id="{{.}}" height="0"/>
+			{{ end }}<img src="/static/grim-reaper.png" alt="ERROR" class="dog" id="grim-reaper" height="0"/>
+		</div>
+    </body>
+	<script type="text/javascript">
+		const size = 100;
+		const maxImgSize = 512;
+		const minImgSize = 64;
+		var Dog = {
+			pos: 0,
+			arr: null,
+			minSize: minImgSize,
+			add: function(v) {
+				if (this.arr == null) {
+					this.arr = [];
+				}
+				this.arr[this.pos] = v;
+				this.pos++;
+				if (this.pos >= size) {
+					this.pos = 0;
+				}
+			},
+			sum: function() {
+				var v = 0;
+				for (var i = 0; i < size; i++) {
+					if (!isNaN(this.arr[i])) {
+						v += this.arr[i];
+					}
+				}
+				return v;
+			}
+		}
+		var dogs = { {{ range .Dogs }}
+			"{{.}}": Object.create(Dog),{{end}}
+			"grim-reaper": Object.create(Dog)
+		};
+		dogs["grim-reaper"].minSize = 0;
+		var queryFunc = function() {
+			$.ajax({url: "/query"})
+				.done(function(data) {
+					Object.keys(dogs).forEach(function(key) {
+						// console.log(key);
+						if (key === data.topDog) {
+							dogs[key].add(1);
+						} else {
+							dogs[key].add(0);
+						}
+						$("#"+key).height((maxImgSize-dogs[key].minSize)*dogs[key].sum()/size+dogs[key].minSize);
+						$("#BEV").text(data.backendVersion)
+						$("#MTV").text(data.midtierVersion)
+						$("#"+key).rotate(Math.random()*4-2);
+					});
+				})
+				.fail(function() {
+					Object.keys(dogs).forEach(function(key) {
+						// console.log(key);
+						if (key === "grim-reaper") {
+							dogs[key].add(1);
+						} else {
+							dogs[key].add(0);
+						}
+						$("#"+key).height((maxImgSize-dogs[key].minSize)*dogs[key].sum()/size+dogs[key].minSize);
+						$("#"+key).rotate(Math.random()*4-2);
+					});
+				})
+				.always(function() {
+					setTimeout(queryFunc, 100);
+				});
+		}
+		// Instead of setInterval, where slow servers fall behind.
+		setTimeout(queryFunc, 100);
+	</script>
+</html>
