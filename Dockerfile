@@ -1,4 +1,4 @@
-FROM golang:1.10 as builder
+FROM golang:1.10.3 as builder
 WORKDIR /go/src/topdog
 COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go install

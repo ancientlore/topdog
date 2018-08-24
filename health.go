@@ -7,7 +7,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/concur/go-health"
+	"github.com/ancientlore/go-health"
 )
 
 var (
