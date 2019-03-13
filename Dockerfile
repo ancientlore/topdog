@@ -3,7 +3,7 @@ WORKDIR /go/src/topdog
 COPY . .
 RUN CGO_ENABLED=0 GOOS=linux GO111MODULE=on go install
 
-FROM gcr.io/distroless/base
+FROM gcr.io/distroless/static
 LABEL Description="Who's the top dog?"
   
 COPY --from=builder /go/bin/topdog /topdog
