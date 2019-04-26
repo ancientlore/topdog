@@ -1,6 +1,0 @@
-# github.com/NYTimes/gziphandler v0.0.0-20180227021810-5032c8878b9d
-github.com/NYTimes/gziphandler
-# github.com/ancientlore/go-health v0.1.1
-github.com/ancientlore/go-health
-# github.com/facebookgo/flagenv v0.0.0-20160425205200-fcd59fca7456
-github.com/facebookgo/flagenv
