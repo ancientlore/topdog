@@ -1,7 +1,7 @@
 github.com/NYTimes/gziphandler v1.1.1 h1:ZUDjpQae29j0ryrS0u/B8HZfJBtBQHjqw2rQ2cqUQ3I=
 github.com/NYTimes/gziphandler v1.1.1/go.mod h1:n/CVRwUEOgIxrgPvAQhUUr9oeUtvrhMomdKFjzJNB0c=
-github.com/ancientlore/go-health v0.1.1 h1:h0A8XG+i0w9Z6EwUZEy+Sb6fkS/CI3LXBB9x+mEHMAs=
-github.com/ancientlore/go-health v0.1.1/go.mod h1:v4Av7F8iVerH0AGcn2HqvxkPga2Ticr9+nt6vc1tQSs=
+github.com/ancientlore/go-health v0.1.2 h1:DO+KmAHflXpq40XM5ql/fDxyfTwPSmv43ThJWpcDkVg=
+github.com/ancientlore/go-health v0.1.2/go.mod h1:rN14P5LDu1VjROsbopAxOKhvp9xTyG8xPB7Oa2ZxwDQ=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
