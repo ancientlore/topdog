@@ -2,7 +2,7 @@ module github.com/ancientlore/topdog
 
 require (
 	github.com/NYTimes/gziphandler v1.1.1
-	github.com/ancientlore/go-health v0.1.2
+	github.com/ancientlore/go-health v0.1.3
 	github.com/facebookgo/flagenv v0.0.0-20160425205200-fcd59fca7456
 )
 
